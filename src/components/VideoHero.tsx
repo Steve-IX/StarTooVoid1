@@ -11,9 +11,27 @@ const videos = [
   '/videos/videoplayback.mp4',
 ];
 
+// Generate particle positions deterministically to avoid hydration mismatch
+function generateParticles(count: number) {
+  return Array.from({ length: count }, (_, i) => ({
+    id: i,
+    left: ((i * 37) % 100),
+    top: ((i * 73 + 17) % 100),
+    duration: 2 + ((i * 31) % 30) / 10,
+    delay: (i * 17) % 50 / 10,
+  }));
+}
+
+const particles = generateParticles(30);
+
 export default function VideoHero() {
   const [currentVideo, setCurrentVideo] = useState(0);
+  const [mounted, setMounted] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -54,34 +72,31 @@ export default function VideoHero() {
       {/* Gradient Overlay */}
       <div className="absolute inset-0 gradient-overlay z-10" />
 
-      {/* Animated star particles overlay */}
-      <div className="absolute inset-0 z-10 overflow-hidden">
-        {[...Array(30)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-white rounded-full"
-            initial={{
-              x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
-              y: Math.random() * (typeof window !== 'undefined' ? window.innerHeight : 800),
-              opacity: 0,
-            }}
-            animate={{
-              y: [null, -100],
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              duration: Math.random() * 3 + 2,
-              repeat: Infinity,
-              delay: Math.random() * 5,
-              ease: 'linear',
-            }}
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-          />
-        ))}
-      </div>
+      {/* Animated star particles overlay - only render after mount */}
+      {mounted && (
+        <div className="absolute inset-0 z-10 overflow-hidden">
+          {particles.map((particle) => (
+            <motion.div
+              key={particle.id}
+              className="absolute w-1 h-1 bg-white rounded-full"
+              style={{
+                left: `${particle.left}%`,
+                top: `${particle.top}%`,
+              }}
+              animate={{
+                y: [0, -100],
+                opacity: [0, 1, 0],
+              }}
+              transition={{
+                duration: particle.duration,
+                repeat: Infinity,
+                delay: particle.delay,
+                ease: 'linear',
+              }}
+            />
+          ))}
+        </div>
+      )}
 
       {/* Content */}
       <div className="relative z-20 h-full flex flex-col items-center justify-center px-6">
@@ -162,4 +177,3 @@ export default function VideoHero() {
     </section>
   );
 }
-

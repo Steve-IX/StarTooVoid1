@@ -136,14 +136,15 @@ export default function ContactPage() {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-lg input-cosmic font-body text-white bg-void-deep"
+                    className="w-full px-4 py-3 rounded-lg input-cosmic font-body text-white bg-[#0a0a0a] appearance-none cursor-pointer"
+                    style={{ colorScheme: 'dark' }}
                   >
-                    <option value="" disabled>Select a topic</option>
-                    <option value="general">General Inquiry</option>
-                    <option value="collaboration">Collaboration</option>
-                    <option value="press">Press / Media</option>
-                    <option value="wholesale">Wholesale</option>
-                    <option value="other">Other</option>
+                    <option value="" disabled className="bg-[#0a0a0a] text-white">Select a topic</option>
+                    <option value="general" className="bg-[#0a0a0a] text-white">General Inquiry</option>
+                    <option value="collaboration" className="bg-[#0a0a0a] text-white">Collaboration</option>
+                    <option value="press" className="bg-[#0a0a0a] text-white">Press / Media</option>
+                    <option value="wholesale" className="bg-[#0a0a0a] text-white">Wholesale</option>
+                    <option value="other" className="bg-[#0a0a0a] text-white">Other</option>
                   </select>
                 </div>
 
