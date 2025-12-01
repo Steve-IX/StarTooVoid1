@@ -154,9 +154,13 @@ startoovoid/
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under a **Proprietary License** - see the [LICENSE](LICENSE) file for details.
 
-**Important:** Please read the Intellectual Property Notice in the LICENSE file. The StarTooVoid brand, trademarks, visual assets, and content are protected intellectual property.
+**All Rights Reserved.** This software, code, website, and all associated intellectual property are the exclusive property of StarTooVoid and are protected by copyright, trademark, and other intellectual property laws.
+
+**Unauthorized use, reproduction, distribution, modification, or creation of derivative works is strictly prohibited and may result in legal action.**
+
+For licensing inquiries or authorized use requests, contact: contact@startoovoid.com
 
 ## Brand
 
