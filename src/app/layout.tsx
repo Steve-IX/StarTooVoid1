@@ -3,6 +3,7 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import StarField from '@/components/StarField';
+import VisitorCounter from '@/components/VisitorCounter';
 import { MusicPlayerProvider } from '@/contexts/MusicPlayerContext';
 import MusicPlayer from '@/components/MusicPlayer';
 
@@ -39,6 +40,7 @@ export default function RootLayout({
           </main>
           <Footer />
           <MusicPlayer />
+          <VisitorCounter />
         </MusicPlayerProvider>
       </body>
     </html>
